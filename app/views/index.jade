@@ -1,0 +1,5 @@
+extends layout
+
+block content
+   div(ng-controller='GraphController')
+      canvas(id="pie",class="chart chart-pie",chart-data="data",chart-labels="labels",chart-legend="true")
