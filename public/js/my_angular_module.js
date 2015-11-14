@@ -34,8 +34,6 @@
 	
     module.factory('votesData', function() {
       
-        console.log(mySocket);
-      
         return {
             labels:["Yes","No","I don't know"],
             data:[[50,30,0]]          
