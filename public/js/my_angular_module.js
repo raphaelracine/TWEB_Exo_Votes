@@ -33,15 +33,16 @@
 	});
 	
     module.factory('votesData', function(mySocket) {
-        var fakeData = {
+      
+        console.log(mySocket);
+      
+        return {
             labels:["Yes","No","I don't know"],
-            data:[50,50,50]            
+            data:[[50,30,0]]          
         };
-        
-        return fakeData;
     });
 	
-	module.controller('GraphController', function($scope, votesData) {
+	module.controller('BoardController', function($scope, votesData) {
 		$scope.labels = votesData.labels;
 		$scope.data = votesData.data;
 	});
