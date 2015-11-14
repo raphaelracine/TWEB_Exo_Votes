@@ -32,7 +32,7 @@
 		return socketFactory();
 	});
 	
-    module.factory('votesData', function() {
+    module.factory('votesData', function(mySocket) {
       
         return {
             labels:["Yes","No","I don't know"],
