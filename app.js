@@ -11,7 +11,8 @@ app.listen(port, function () {
   console.log('Express server listening on port ' + port);
 });
 
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-server.listen(80);
+// Create a socket-io for communications with clients
+var socketio = require('socket.io')(require('http').createServer(app));
+
+module.exports = socketio;
 
