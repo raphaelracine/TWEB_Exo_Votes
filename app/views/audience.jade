@@ -1,9 +1,9 @@
 h1 Are you happy ?
 form(class="form-inline")
 	div(class="col-md-4")
-		button(class="btn btn-primary btn-lg btn-block") Yes
+		button(class="btn btn-primary btn-lg btn-block",ng-click="voteYes()") Yes
 	div(class="col-md-4")
-		button(class="btn btn-primary btn-lg btn-block") No
+		button(class="btn btn-primary btn-lg btn-block",ng-click="voteNo()") No
 	div(class="col-md-4")
-		button(class="btn btn-primary btn-lg btn-block") I dont'know
+		button(class="btn btn-primary btn-lg btn-block",ng-click="voteDontKnow()") I dont'know
 block reset_audience

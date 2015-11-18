@@ -2,6 +2,8 @@
 
   var module = angular.module('myApp', ['chart.js', 'btford.socket-io', 'ui.router'])
 
+  var votes = [[0,0,0]];
+  
   module.config(function($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('welcome');
@@ -32,22 +34,50 @@
       return socketFactory();
   });
 
-  module.factory('votesData', function(mySocket) {      
-      return {
+  module.factory('votesData', function(mySocket) {
+	  
+	  mySocket.on('votes', function(data) {
+		  console.log("Coucou");
+		  votes[0][0] = data.yes;
+		  votes[0][1] = data.no;
+		  votes[0][2] = data.dontknow;
+	  });
+	  
+	  return {
           labels:["Yes","No","I don't know"],
-          data:[[50,30,0]]          
+          data:votes        
       };
   });
 
-  module.controller('BoardController', function($scope, votesData) {
-      $scope.labels = votesData.labels;
+  module.controller('BoardController', function($scope, votesData, mySocket) {	  
+      
+	  $scope.labels = votesData.labels;
       $scope.data = votesData.data;
+	  
+	  $scope.voteYes = function() {
+		  mySocket.emit('event', {vote: 'yes'});
+	  };
+	  
+	  $scope.voteNo = function() {
+		  mySocket.emit('event', {vote: 'no'});
+	  };
+	  
+	  $scope.voteDontKnow = function() {
+		  mySocket.emit('event', {vote: 'dontknow'});
+	  };
+	  
+	  $scope.voteReset = function() {
+		  mySocket.emit('event', {vote: 'reset'});
+	  };
+	  
   });
 
   module.controller('HeaderController', function($scope, $location) {
+	  
 	  $scope.isActive = function(viewLocation) {
 		  return viewLocation === $location.path();
 	  };
+	  
   });
 
 })();

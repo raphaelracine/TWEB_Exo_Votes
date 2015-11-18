@@ -19,7 +19,7 @@ html(lang='en')
     if ENV_DEVELOPMENT
       script(src='http://localhost:35729/livereload.js')
   body
-   div(ng-app='myApp')
+   div(ng-app='myApp',ng-controller='BoardController')
      div(class='container-fluid')
          nav(class='navbar navbar-default navbar-fixed-top',ng-controller='HeaderController')
             div(class='navbar-header')
