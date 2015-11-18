@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'chapitre6-votes'
     },
-    port: process.env.port,
+    port: process.env.port || 3000,
   },
 
   test: {
@@ -16,7 +16,7 @@ var config = {
     app: {
       name: 'chapitre6-votes'
     },
-    port: process.env.port,
+    port: process.env.port || 3000,
   },
 
   production: {
@@ -24,7 +24,7 @@ var config = {
     app: {
       name: 'chapitre6-votes'
     },
-    port: process.env.port,
+    port: process.env.port || 3000,
   }
 };
 

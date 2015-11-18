@@ -5,10 +5,8 @@ var app = express();
 
 require('./config/express')(app, config);
 
-var port = process.env.port || 3000;
-
-var server = app.listen(port, function () {
-  console.log('Express server listening on port ' + port);
+var server = app.listen(config.port, function () {
+  console.log('Express server listening on port ' + config.port);
 });
 
 // Create a socket-io for communications with clients
