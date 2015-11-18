@@ -2,13 +2,15 @@ var path = require('path'),
     rootPath = path.normalize(__dirname + '/..'),
     env = process.env.NODE_ENV || 'development';
 
+var port = process.env.PORT || 3000;
+
 var config = {
   development: {
     root: rootPath,
     app: {
       name: 'chapitre6-votes'
     },
-    port: process.env.port || 3000,
+    port: port,
   },
 
   test: {
@@ -16,7 +18,7 @@ var config = {
     app: {
       name: 'chapitre6-votes'
     },
-    port: process.env.port || 3000,
+    port: port,
   },
 
   production: {
@@ -24,7 +26,7 @@ var config = {
     app: {
       name: 'chapitre6-votes'
     },
-    port: process.env.port || 3000,
+    port: port,
   }
 };
 
