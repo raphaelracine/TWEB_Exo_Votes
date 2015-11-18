@@ -32,27 +32,13 @@
       return socketFactory();
   });
 
-  module.factory('votesData', function(mySocket) {
+  module.controller('BoardController', function($scope, mySocket) {
 	  
-	  var votes = [[0,0,0]];
-	  
-	  mySocket.on('votes', function(data) {
-		  console.log("Coucou");
-		  votes[0][0] = data.yes;
-		  votes[0][1] = data.no;
-		  votes[0][2] = data.dontknow;
-	  });
-	  
-	  return {
-          labels:["Yes","No","I don't know"],
-          data:votes        
-      };
-  });
-
-  module.controller('BoardController', function($scope, votesData, mySocket) {	  
+	  $scope.labels = ["Yes", "No", "I don't know"];
       
-	  $scope.labels = votesData.labels;
-      $scope.data = votesData.data;
+	  mySocket.on('votes', function(data) {
+		  $scope.data = [[data.yes, data.no, data.dontknow]];
+	  });
 	  
 	  $scope.voteYes = function() {
 		  mySocket.emit('event', {vote: 'yes'});
@@ -72,8 +58,7 @@
 	  
   });
 
-  module.controller('HeaderController', function($scope, $location) {
-	  
+  module.controller('HeaderController', function($scope, $location) {	  
 	  $scope.isActive = function(viewLocation) {
 		  return viewLocation === $location.path();
 	  };
