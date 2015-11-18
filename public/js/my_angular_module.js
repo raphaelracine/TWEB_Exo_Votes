@@ -1,8 +1,6 @@
   (function() {
 
   var module = angular.module('myApp', ['chart.js', 'btford.socket-io', 'ui.router'])
-
-  var votes = [[0,0,0]];
   
   module.config(function($stateProvider, $urlRouterProvider) {
 
@@ -35,6 +33,8 @@
   });
 
   module.factory('votesData', function(mySocket) {
+	  
+	  var votes = [[0,0,0]];
 	  
 	  mySocket.on('votes', function(data) {
 		  console.log("Coucou");
