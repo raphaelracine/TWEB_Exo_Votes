@@ -35,7 +35,7 @@ socketio.on('connection', function(socket) {
 		else		
 			votes[data.vote] = votes[data.vote] + 1;
 		
-		socket.emit('votes', {yes:votes['yes'], no:votes['no'], dontknow:votes['dontknow']});	
+		socketio.emit('votes', {yes:votes['yes'], no:votes['no'], dontknow:votes['dontknow']});	
 	});
 	
 });
