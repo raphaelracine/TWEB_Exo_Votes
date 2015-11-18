@@ -5,7 +5,7 @@ var app = express();
 
 require('./config/express')(app, config);
 
-var port = process.env.port || 3000;
+var port = process.env.port;
 
 var server = app.listen(port, function () {
   console.log('Express server listening on port ' + port);
