@@ -13,7 +13,6 @@ var server = app.listen(config.port, function () {
 var socketio = require('socket.io')(server);
 
 
-// Create a tab for votes (in other file can be better...)
 var votes = {};
 votes['yes'] = 0;
 votes['no'] = 0;
